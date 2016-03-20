@@ -1,6 +1,6 @@
 {
-   "name": “Shadow Health Question Collector“,
-   "version": “0.2”,
+   "name": "Shadow Health Question Collector",
+   "version": "0.2",
    "manifest_version": 2,
    "description": "Auto Questions",
    "content_scripts": [{
