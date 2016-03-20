@@ -1,40 +1,40 @@
 function showQuestions(questions) {
-   var qb = document.querySelector('#questionBox');
-   qb.innerHTML = '';
+	var qb = document.querySelector('#questionBox');
+	qb.innerHTML = '';
 
-   for (q in questions) {
-      var questionItem = document.createElement('LI');
+	for (q in questions) {
+		var questionItem = document.createElement('LI');
 		questionItem.innerText = questions[q];
-      qb.appendChild(questionItem);
-   }
+		qb.appendChild(questionItem);
+	}
 }
 
 function getStoredQuestions() {
-   chrome.runtime.sendMessage({
-      from: 'popup',
-      subject: 'getStoredQuestions'
-   },showQuestions);
+	chrome.runtime.sendMessage({
+		from: 'popup',
+		subject: 'getStoredQuestions'
+	}, showQuestions);
 }
 
 function requestFindQuestions() {
-   chrome.tabs.query({
-      active: true,
-      currentWindow: true
-   }, function(tabs) {
-      chrome.tabs.sendMessage(
-         tabs[0].id, {
-            from: 'popup',
-            subject: 'FindQuestions'
-         },
-         showQuestions);
-   });
+	chrome.tabs.query({
+		active: true,
+		currentWindow: true
+	}, function(tabs) {
+		chrome.tabs.sendMessage(
+			tabs[0].id, {
+				from: 'popup',
+				subject: 'FindQuestions'
+			},
+			showQuestions);
+	});
 }
 
 document.addEventListener('DOMContentLoaded', function() {
 	getStoredQuestions();
-   document.getElementById('loadQuestions').addEventListener('click', function() {
-      requestFindQuestions();
-   });
+	document.getElementById('loadQuestions').addEventListener('click', function() {
+		requestFindQuestions();
+	});
 });
 
 /*

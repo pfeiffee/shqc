@@ -1,28 +1,28 @@
 {
-   "name": "Shadow Health Question Collector",
-   "version": "0.2",
-   "manifest_version": 2,
-   "description": "Auto Questions",
-   "content_scripts": [{
-      "matches": ["https://*/*"],
-      "js": ["content.js"],
-      "run_at": "document_end"
-   }],
-   "browser_action": {
-      "default_popup": "popup.html"
-   },
-	"background":{
-    "scripts":["background.js"],
-    "persistent":true
-},
-   "permissions": [
-      "contextMenus",
-      "tabs",
-      "http://*/*",
-      "https://*/*"
-   ],
-   "icons": {
-      "16": "logo-icon.png",
-      "128": "logo-icon.png"
-   }
+	"name": "Shadow Health Question Collector",
+	"version": "0.2",
+	"manifest_version": 2,
+	"description": "Auto Questions",
+	"content_scripts": [{
+		"matches": ["https://*/*"],
+		"js": ["content.js"],
+		"run_at": "document_end"
+	}],
+	"browser_action": {
+		"default_popup": "popup.html"
+	},
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": true
+	},
+	"permissions": [
+		"contextMenus",
+		"tabs",
+		"http://*/*",
+		"https://*/*"
+	],
+	"icons": {
+		"16": "logo-icon.png",
+		"128": "logo-icon.png"
+	}
 }
