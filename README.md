@@ -1,1 +1,1 @@
-# shqc
+# Shadow Health Question Collector Chrome Extension
