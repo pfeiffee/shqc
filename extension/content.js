@@ -7,7 +7,7 @@ chrome.runtime.sendMessage({
 
 // Listen for messages from the popup
 chrome.runtime.onMessage.addListener(function(msg, sender, response) {
-	if ((msg.from === 'popup') && (msg.subject === 'FindQuestions')) {
+	if ((msg.from === 'popup') && (msg.subject === 'findQuestions')) {
 		var questions = [];
 
 		var qs = document.querySelectorAll('div.sr-only');
@@ -26,5 +26,23 @@ chrome.runtime.onMessage.addListener(function(msg, sender, response) {
 
 		console.log('FindQuestions', questions);
 		response(questions);
+	}
+
+	if ((msg.from === 'popup') && (msg.subject === 'showPanel')) {
+		var sidebar;
+		$('body').css({
+			'padding-right': '350px'
+		});
+		sidebar = $('<div id="sidebar">yo</div>');
+		sidebar.css({
+			'position': 'fixed',
+			'right': '0px',
+			'top': '0px',
+			'z-index': 9999,
+			'width': '290px',
+			'height': '100%',
+			'background-color': 'blue' // Confirm it shows up
+		});
+		$('body').append(sidebar);
 	}
 });

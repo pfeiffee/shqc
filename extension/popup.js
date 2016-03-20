@@ -24,7 +24,21 @@ function requestFindQuestions() {
 		chrome.tabs.sendMessage(
 			tabs[0].id, {
 				from: 'popup',
-				subject: 'FindQuestions'
+				subject: 'findQuestions'
+			},
+			showQuestions);
+	});
+}
+
+function requestShowPanel() {
+	chrome.tabs.query({
+		active: true,
+		currentWindow: true
+	}, function(tabs) {
+		chrome.tabs.sendMessage(
+			tabs[0].id, {
+				from: 'popup',
+				subject: 'showPanel'
 			},
 			showQuestions);
 	});
@@ -32,9 +46,12 @@ function requestFindQuestions() {
 
 document.addEventListener('DOMContentLoaded', function() {
 	getStoredQuestions();
-	document.getElementById('loadQuestions').addEventListener('click', function() {
+	document.getElementById('requestFindQuestions').addEventListener('click', function() {
 		requestFindQuestions();
 	});
+   document.getElementById('requestShowPanel').addEventListener('click', function() {
+      requestShowPanel();
+   });
 });
 
 /*
